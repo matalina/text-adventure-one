@@ -6,8 +6,6 @@
 * [Room](#room)
 * [Skill](#skill)
 * [Item](#item)
-* [Quest](#quest)
-* [Journal](#journal)
 * [Map](#map)
 * [Npc](#npc)
 
@@ -184,31 +182,24 @@ LargeCarryItem extends CarryItem {
 ```
 Skill {
     name: string,
+    cost: integer, // how many action points does the skill cost
     description: string,
-}
-```
-
-## Quest
-```
-Quest {
-    name: string,
-    description: string,
-}
-```
-
-## Journal 
-```
-Journal {
-    name: string,
-    description: string,
+    command: string,
+    shortcut: char, 
+    output: string, // text to display,
+    powers: {
+       life: integer, // +/- to life
+       action: integer, // +/- to action
+       carry: integer, // +/- to carry
+    },
+    do(target) {},  // target is some other object
 }
 ```
 
 ## Map 
 ```
 Map {
-    name: string,
-    description: string,
+    current: Room,
 }
 ```
 
