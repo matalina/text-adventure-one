@@ -1,5 +1,12 @@
 # Objects
 
+* [Character](#character)
+* [Profession](#profession)
+* [Race][#race)
+* [Room][#room)
+* [Skill](#skill)
+* [Item](#item)
+
 
 ## Character
 ```
@@ -7,20 +14,20 @@ Character {
     name: string,
     description: string,
     level: integer,
-    profession: [Profession](#profession),
-    race: [Race](#race),
-    location: [Room](#room),
+    profession: Profession,
+    race: Race,
+    location: Room,
     points {
         life: integer,
         action: integer,
         carry: integer,
     },
-    inventory: [], // [Item](#item)s
+    inventory: [], // Items
     levelUp() {},
     rest(hours) {},
-    do([Skill](#skill)) {},
-    take([Item](#item)) {},
-    drop([Item](#item)) {},
+    do(Skill) {},
+    take(Item) {},
+    drop(Item) {},
     say(something, someone) {},
     move(direction) {},
 }
