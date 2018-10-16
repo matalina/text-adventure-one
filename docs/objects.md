@@ -1,5 +1,6 @@
 # Objects
 
+* [Game](#game)
 * [Character](#character)
 * [Profession](#profession)
 * [Race](#race)
@@ -9,6 +10,16 @@
 * [Map](#map)
 * [Npc](#npc)
 
+## Game
+```
+Game {
+    name: string,
+    description: string,
+    start: Room,
+    map: Map,
+    character: Character,
+}
+```
 
 ## Character
 ```
