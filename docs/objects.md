@@ -200,6 +200,7 @@ Skill {
 ```
 Map {
     current: Room,
+    rooms: [], // array of Rooms
 }
 ```
 
@@ -208,5 +209,23 @@ Map {
 Npc {
     name: string,
     description: string,
+    greeting: string, // string the NPC greets you with
+}
+
+Monster {
+    life: integer, // monster's life
+    skills: [], // array of Skills,
+    weapon: Item,
+    drops: [], // array of Items to drop on death
+    experience: integer // worth on death
+}
+
+Person {
+    scripts: {}, // trigger word: Script
+}
+
+Script {
+    dialog:
+    scripts: {}, // trigger word: Script
 }
 ```
