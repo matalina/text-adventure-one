@@ -9,6 +9,7 @@
 * [Quest](#quest)
 * [Journal](#journal)
 * [Map](#map)
+* [Npc](#npc)
 
 
 ## Character
@@ -20,8 +21,13 @@ Character {
     profession: Profession,
     race: Race,
     location: Room,
+    skills: {}, // keyword: Skill (move, talk, search, look, profession and race skills)
+    hotkeys [], // #: Skill
     points {
-        experience: integer,
+        experience: {
+            total: integer, // total experience gained overall
+            level: integer, // total experience gained for this level
+        },
         life: integer,
         action: integer,
         carry: integer,
@@ -36,20 +42,41 @@ Character {
     },
     levelUp() {},
     rest(hours) {},
-    do(Skill) {},
+    do(Skill, object) {},
     take(Item) {},
     drop(Item) {},
     equip(Item) {},
     unequip(Item) {},
-    say(something, someone) {},
-    move(direction) {},
+    use(Item) {},
+    addPoints(type, amount) {},
 }
 ```
+
+## Level
+```
+Level {
+    name: string,
+    description: string,
+    
+    skills: [], // array of Skills gained at this level
+    add: { // gained at this level
+        life: integer,
+        action: integer, 
+        carry: integer, 
+    },
+    experience: integer, // number of points needed to level Up from previous level
+    items: [], // array of Items 
+}
+```
+
 ## Profession
 ```
 Profession {
     name: string,
     description: string,
+    skills: [], // array of Skills for listing purposes only
+    levels: [], // array of Levels
+    
 }
 ```
 
@@ -120,6 +147,14 @@ Journal {
 ## Map 
 ```
 Map {
+    name: string,
+    description: string,
+}
+```
+
+## NPC
+```
+Npc {
     name: string,
     description: string,
 }
