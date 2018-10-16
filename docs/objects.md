@@ -2,8 +2,8 @@
 
 * [Character](#character)
 * [Profession](#profession)
-* [Race][#race]
-* [Room][#room]
+* [Race](#race)
+* [Room](#room)
 * [Skill](#skill)
 * [Item](#item)
 * [Quest](#quest)
