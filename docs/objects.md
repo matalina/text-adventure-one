@@ -76,7 +76,6 @@ Profession {
     description: string,
     skills: [], // array of Skills for listing purposes only
     levels: [], // array of Levels
-    
 }
 ```
 
@@ -85,6 +84,12 @@ Profession {
 Race {
     name: string,
     description: string,
+    skills: [], // array of Skills available for the race
+    points: { // point modifiers
+        life: integer, // +/- to life
+        action: integer, // +/- to action
+        carry: integer, // +/- to carry weight
+    }
 }
 ```
 
@@ -93,6 +98,29 @@ Race {
 Room {
     name: string,
     description: string,
+    directions: {
+        north: Direction, 
+        east: Direction,
+        south: Direction,
+        west: Direction,
+    },
+    items: [], // an array of Items in the room
+    npcs: [], // an array of NPCs in the room
+}
+
+Direction {
+    name: string,
+    description: string,
+    hidden: boolean,
+    to: Room,
+    from: Room,
+    
+}
+
+Wall extends Direction {
+    hidden: false,
+    to: null,
+    items: [], // an array of Items to interact with in that direction
 }
 ```
 
@@ -101,6 +129,38 @@ Room {
 Item {
     name: string,
     description: string,
+    carry: integer, // how much it space it takes
+    type: string, // body, weapon, accessory, bag, other
+}
+
+UsableItem extends Item {
+    type: 'other',
+    reusable: boolean,
+    use: string, // what happens when you use the item text
+    does: {
+        attribute: string, // which attribute it affects
+        amount: integer, // +/- to given attribute
+    },
+    target: string, // Name of some other object
+}
+
+Weapon extends Item {
+    type: 'weapon',
+    damage: integer, // damage delivered based on random roll
+}
+
+Armor extends Item {
+    type: 'body',
+    armor: integer, // number added to life
+}
+
+MagicItem extends Item {
+    active: boolean, // true = active in inventory, false = must be equipped
+    powers: {
+       life: integer, // +/- to life
+       action: integer, // +/- to action
+       carry: integer, // +/- to carry
+    }
 }
 
 CarryItem extends Item {
