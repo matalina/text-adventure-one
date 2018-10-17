@@ -4,7 +4,7 @@ webpackJsonp([1],{
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(107);
-module.exports = __webpack_require__(245);
+module.exports = __webpack_require__(246);
 
 
 /***/ }),
@@ -21,9 +21,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_events___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_events__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_router__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__routes__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_display__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_display__ = __webpack_require__(236);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_display___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_display__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_command_line__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_command_line__ = __webpack_require__(241);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_command_line___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_command_line__);
 
 
@@ -248,7 +248,11 @@ var render = function() {
     _c("ol", [
       _c(
         "li",
-        [_c("router-link", { attrs: { to: "game/maze" } }, [_vm._v("Maze")])],
+        [
+          _c("router-link", { attrs: { to: "game/escape-room" } }, [
+            _vm._v("Escape Room")
+          ])
+        ],
         1
       )
     ])
@@ -278,7 +282,7 @@ var normalizeComponent = __webpack_require__(31)
 /* script */
 var __vue_script__ = __webpack_require__(233)
 /* template */
-var __vue_template__ = __webpack_require__(234)
+var __vue_template__ = __webpack_require__(235)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -353,7 +357,7 @@ exports = module.exports = __webpack_require__(13)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -365,6 +369,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modules_room__ = __webpack_require__(234);
+//
+//
 //
 //
 //
@@ -372,7 +379,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            rooms: [new __WEBPACK_IMPORTED_MODULE_0__modules_room__["a" /* default */]({
+                name: 'Escape Room',
+                tag: 'room',
+                description: 'You are stuck inside an industrial space.  Everywhere you can see rusted metal pipes, multi-colored wires hanging in disarray and puddles of unknown substances on the floor.  The light above is flickering and the there is the sound of dripping water coming from someplace unknown.  There is only one exit to the west and it is locked.'
+            })]
+        };
+    },
+
     watch: {
         $route: function $route(to, from) {
             // load new game
@@ -383,22 +401,68 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ }),
 
 /***/ 234:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+function Room(data) {
+    var name = data.name,
+        tag = data.tag,
+        description = data.description;
+    //directions = data.directions, // object of directions direction: Wall/Door
+    //items = data.items, // array of Items
+    //npcs = data.npcs; // array of NPCs
+
+    this.look = function () {
+        return "You look around. \n\n" + description;
+    };
+
+    /*this.getVisible = function (type) {
+        let visible = [];
+        for(let index in [type]) {
+            if(! [type][index].hidden) {
+                visible.push([type][index].tag);
+            }
+        }
+        return visible;
+    };*/
+
+    Object.defineProperties(this, {
+        name: {
+            get: function get() {
+                return name;
+            }
+        },
+        tag: {
+            get: function get() {
+                return tag;
+            }
+        }
+    });
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (Room);
+
+/***/ }),
+
+/***/ 235:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("h1", [_vm._v("Escape Room")]),
+    _vm._v(" "),
+    _c("p", [
+      _vm._v(
+        "There is only one way in, and one way out.  You have been looked inside, with all the tools you need to escape.  How fast can you do it?"
+      )
+    ]),
+    _vm._v("\n    " + _vm._s(_vm.rooms[0].look()) + "\n")
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("New Maze")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -410,19 +474,19 @@ if (false) {
 
 /***/ }),
 
-/***/ 235:
+/***/ 236:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(236)
+  __webpack_require__(237)
 }
 var normalizeComponent = __webpack_require__(31)
 /* script */
-var __vue_script__ = __webpack_require__(238)
+var __vue_script__ = __webpack_require__(239)
 /* template */
-var __vue_template__ = __webpack_require__(239)
+var __vue_template__ = __webpack_require__(240)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -462,13 +526,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 236:
+/***/ 237:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(237);
+var content = __webpack_require__(238);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -489,7 +553,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 237:
+/***/ 238:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(13)(false);
@@ -504,7 +568,7 @@ exports.push([module.i, "\n#display[data-v-d63ab074] {\n  height: 100%;\n  overf
 
 /***/ }),
 
-/***/ 238:
+/***/ 239:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -522,7 +586,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 239:
+/***/ 240:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -548,19 +612,19 @@ if (false) {
 
 /***/ }),
 
-/***/ 240:
+/***/ 241:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(241)
+  __webpack_require__(242)
 }
 var normalizeComponent = __webpack_require__(31)
 /* script */
-var __vue_script__ = __webpack_require__(243)
+var __vue_script__ = __webpack_require__(244)
 /* template */
-var __vue_template__ = __webpack_require__(244)
+var __vue_template__ = __webpack_require__(245)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -600,13 +664,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 241:
+/***/ 242:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(242);
+var content = __webpack_require__(243);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -627,7 +691,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 242:
+/***/ 243:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(13)(false);
@@ -642,7 +706,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 
-/***/ 243:
+/***/ 244:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -669,7 +733,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 244:
+/***/ 245:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -712,7 +776,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 245:
+/***/ 246:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

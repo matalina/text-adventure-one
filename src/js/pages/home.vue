@@ -4,8 +4,8 @@
 
         <p>Load a Game:</p>
         <ol>
-            <li><router-link to="game/maze">Maze</router-link></li>
-            <!--li><router-link to="game/escape-room">Escape Room</router-link></li-->
+            <!--li><router-link to="game/maze">Maze</router-link></li-->
+            <li><router-link to="game/escape-room">Escape Room</router-link></li>
             <!--li><router-link to="game/short-story">Short Story</router-link></li-->
         </ol>
 
