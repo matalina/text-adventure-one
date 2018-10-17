@@ -1,4 +1,4 @@
-```json
+```
 { 
     name: 'Escape Room',
     tag: 'escape-room-1', // unique
