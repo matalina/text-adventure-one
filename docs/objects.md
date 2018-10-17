@@ -27,6 +27,13 @@ Game {
     do(Command, ...args) {},
 }
 
+Map {
+    name: string,
+    tag: string, //unique
+    description: string,
+    rooms: [], // array of Rooms
+}
+
 Command {
     tag: string, // the word which triggers the command,
     trigger: Trigger, // 
