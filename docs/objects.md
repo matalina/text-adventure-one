@@ -55,6 +55,7 @@ Character {
         bag: LargeCarryItem,
         pouch: SmallCarryItem,
     },
+    create() {},
     levelUp(level) {},
     rest(hours) {},
     do(Skill, object) {},
