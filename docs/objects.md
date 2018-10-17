@@ -149,7 +149,14 @@ Door extends Direction {
     from: Room.tag,
     exit: boolean, // true = game end
     locked: boolean,
+    key: Key,
     open(key) {}
+}
+
+Key extends Item {
+    for: Item,
+    physical: boolean, // true = physical key, false = combination
+    combination: string, // string of characters to open lock
 }
 ```
 
@@ -160,10 +167,10 @@ Item {
     tag: string, // unique
     description: string,
     carry: integer, // how much it space it takes
-    type: string, // body, weapon, accessory, bag, other
+    type: string, // body, weapon, accessory, bag, key, other
     look() {},
     search() {},
-    use() {},
+    use(target) {},
 }
 
 Box { 
