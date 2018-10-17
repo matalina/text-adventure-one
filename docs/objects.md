@@ -140,15 +140,13 @@ Direction {
 }
 
 Wall extends Direction {
-    hidden: false,
-    to: null,
     items: [], // an array of Items to interact with in that direction
 }
 
 Door extends Direction {
     hidden: boolean,
-    to: Room,
-    from: Room,
+    to: Room.tag,
+    from: Room.tag,
     exit: boolean, // true = game end
 }
 ```
