@@ -16,7 +16,7 @@ Game {
     name: string,
     tag: string, // unique
     description: string,
-    start: Room,
+    start: Room.tag,
     map: Map,
     character: Character,
     load(game) {},
@@ -36,7 +36,7 @@ Character {
     level: integer,
     profession: Profession,
     race: Race,
-    location: Room,
+    location: Room.tag,
     skills: {}, // keyword: Skill (move, talk, search, look, profession and race skills)
     hotkeys [], // #: Skill
     points {
