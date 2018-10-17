@@ -19,6 +19,7 @@ Game {
     start: Room,
     map: Map,
     character: Character,
+    load(game) {},
     start() {},
     exit() {},
     pause() {},
