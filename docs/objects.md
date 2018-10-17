@@ -148,6 +148,8 @@ Door extends Direction {
     to: Room.tag,
     from: Room.tag,
     exit: boolean, // true = game end
+    locked: boolean,
+    open(key) {}
 }
 ```
 
