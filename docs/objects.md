@@ -14,10 +14,15 @@
 ```
 Game {
     name: string,
+    tag: string, // unique
     description: string,
     start: Room,
     map: Map,
     character: Character,
+    start() {},
+    exit() {},
+    pause() {},
+    command(command) {},
 }
 ```
 
@@ -25,6 +30,7 @@ Game {
 ```
 Character {
     name: string,
+    tag: string, // unique
     description: string,
     level: integer,
     profession: Profession,
@@ -49,7 +55,7 @@ Character {
         bag: LargeCarryItem,
         pouch: SmallCarryItem,
     },
-    levelUp() {},
+    levelUp(level) {},
     rest(hours) {},
     do(Skill, object) {},
     take(Item) {},
@@ -65,6 +71,7 @@ Character {
 ```
 Level {
     name: string,
+    tag: string, // unique
     description: string,
     
     skills: [], // array of Skills gained at this level
@@ -82,6 +89,7 @@ Level {
 ```
 Profession {
     name: string,
+    tag: string, // unique
     description: string,
     skills: [], // array of Skills for listing purposes only
     levels: [], // array of Levels
@@ -92,6 +100,8 @@ Profession {
 ```
 Race {
     name: string,
+    tag: string, // unique
+    tag: string, // unique
     description: string,
     skills: [], // array of Skills available for the race
     points: { // point modifiers
@@ -106,6 +116,7 @@ Race {
 ```
 Room {
     name: string,
+    tag: string, // unique
     description: string,
     directions: {
         north: Direction, 
@@ -115,10 +126,14 @@ Room {
     },
     items: [], // an array of Items in the room
     npcs: [], // an array of NPCs in the room
+    look(something) {},
+    move(direction) {},
+    search(something) {},
 }
 
 Direction {
     name: string,
+    tag: string, // unique
     description: string,
     hidden: boolean,
     to: Room,
@@ -137,9 +152,18 @@ Wall extends Direction {
 ```
 Item {
     name: string,
+    tag: string, // unique
     description: string,
     carry: integer, // how much it space it takes
     type: string, // body, weapon, accessory, bag, other
+    look() {},
+    search() {},
+    use() {},
+}
+
+Box { 
+    items: [], // list of items contained inside the item
+    open() {}
 }
 
 UsableItem extends Item {
@@ -193,6 +217,7 @@ LargeCarryItem extends CarryItem {
 ```
 Skill {
     name: string,
+    tag: string, // unique
     cost: integer, // how many action points does the skill cost
     description: string,
     command: string,
@@ -210,8 +235,10 @@ Skill {
 ## Map 
 ```
 Map {
+    tag: string, // unique
     current: Room,
     rooms: [], // array of Rooms
+    move(direction) {},
 }
 ```
 
@@ -219,11 +246,13 @@ Map {
 ```
 Npc {
     name: string,
+    tag: string, // unique
     description: string,
     greeting: string, // string the NPC greets you with
+    say(trigger) {},
 }
 
-Monster {
+Monster extends Npc {
     life: integer, // monster's life
     skills: [], // array of Skills,
     weapon: Item,
@@ -231,11 +260,12 @@ Monster {
     experience: integer // worth on death
 }
 
-Person {
+Person extends Npc{
     scripts: {}, // trigger word: Script
 }
 
 Script {
+    tag: string, // unique
     dialog:
     scripts: {}, // trigger word: Script
 }
