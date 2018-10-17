@@ -19,11 +19,38 @@ Game {
     start: Room.tag,
     map: Map,
     character: Character,
+    story: [], // Array of Chapters
     load(game) {},
     start() {},
     exit() {},
     pause() {},
-    command(command) {},
+    do(Command, ...args) {},
+}
+
+Command {
+    tag: string, // the word which triggers the command,
+    trigger: Trigger, // 
+    args: {}, // variable: Object Type
+    text: string, // the output of the command
+}
+```
+
+# Story 
+```
+Chpater {
+    name: string,
+    script: [], // an array of Scripts to be done in order base
+}
+
+Script {
+    tag: string, // unique
+    trigger: Trigger
+    dialog:
+    scripts: {}, // trigger word: Script
+}
+
+Trigger {
+    tag: string, // unique,
 }
 ```
 
@@ -33,17 +60,11 @@ Character {
     name: string,
     tag: string, // unique
     description: string,
-    level: integer,
     profession: Profession,
     race: Race,
     location: Room.tag,
     skills: {}, // keyword: Skill (move, talk, search, look, profession and race skills)
-    hotkeys [], // #: Skill
     points {
-        experience: {
-            total: integer, // total experience gained overall
-            level: integer, // total experience gained for this level
-        },
         life: integer,
         action: integer,
         carry: integer,
@@ -56,8 +77,8 @@ Character {
         bag: LargeCarryItem,
         pouch: SmallCarryItem,
     },
+    possessions: [], // array of Items owned
     create() {},
-    levelUp(level) {},
     rest(hours) {},
     do(Skill, object) {},
     take(Item) {},
@@ -65,25 +86,6 @@ Character {
     equip(Item) {},
     unequip(Item) {},
     use(Item) {},
-    addPoints(type, amount) {},
-}
-```
-
-## Level
-```
-Level {
-    name: string,
-    tag: string, // unique
-    description: string,
-    
-    skills: [], // array of Skills gained at this level
-    add: { // gained at this level
-        life: integer,
-        action: integer, 
-        carry: integer, 
-    },
-    experience: integer, // number of points needed to level Up from previous level
-    items: [], // array of Items 
 }
 ```
 
@@ -94,7 +96,6 @@ Profession {
     tag: string, // unique
     description: string,
     skills: [], // array of Skills for listing purposes only
-    levels: [], // array of Levels
 }
 ```
 
@@ -199,15 +200,6 @@ Armor extends Item {
     armor: integer, // number added to life
 }
 
-MagicItem extends Item {
-    active: boolean, // true = active in inventory, false = must be equipped
-    powers: {
-       life: integer, // +/- to life
-       action: integer, // +/- to action
-       carry: integer, // +/- to carry
-    }
-}
-
 CarryItem extends Item {
    capacity: integer,
    inventory: [], // Items 
@@ -264,21 +256,7 @@ Npc {
     say(trigger) {},
 }
 
-Monster extends Npc {
-    life: integer, // monster's life
-    skills: [], // array of Skills,
-    weapon: Item,
-    drops: [], // array of Items to drop on death
-    experience: integer // worth on death
-}
-
 Person extends Npc{
-    scripts: {}, // trigger word: Script
-}
-
-Script {
-    tag: string, // unique
-    dialog:
     scripts: {}, // trigger word: Script
 }
 ```
