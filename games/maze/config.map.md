@@ -1,10 +1,8 @@
 ---
 name: Map  
 tag: map  
----
-
-# Maze Map
-<pre>
+text-map:
+--- |
 ------------------L--
 | K |   |   |   | E |  
 |21 O 2 O 2 O 2 O 25|  
@@ -26,4 +24,6 @@ tag: map
 | 1 O 2 O 3 O 4 H 5 |  
 | S |   |   |   |   |  
 ---------------------
-</pre>
+---
+
+description goes here

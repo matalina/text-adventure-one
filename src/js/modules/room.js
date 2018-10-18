@@ -1,37 +1,28 @@
-function Room(data) {
-    let name = data.name,
-            tag = data.tag,
-            description = data.description;
-            //directions = data.directions, // object of directions direction: Wall/Door
-            //items = data.items, // array of Items
-            //npcs = data.npcs; // array of NPCs
+const _description = new WeakMap();
 
-    this.look = function () {
-        return "You look around. \n\n" + description;
-    };
-
-    /*this.getVisible = function (type) {
-        let visible = [];
-        for(let index in [type]) {
-            if(! [type][index].hidden) {
-                visible.push([type][index].tag);
-            }
+class Room {
+    constructor(data = null) {
+        if(data === null) {
+            this.name = 'Default Room';
+            this.tag = 'room';
+            _description.set(this, '');
         }
-        return visible;
-    };*/
-
-    Object.defineProperties(this, {
-        name: {
-            get: function () {
-                return name;
-            }
-        },
-        tag: {
-            get: function () {
-                return tag;
-            }
+        else {
+            this.name = data.name;
+            this.tag = data.tag;
+            _description.set(this, data.description);
         }
-    })
+    }
+
+    look() {
+        return `You look around.\n\n ${_description.get(this)}`;
+    }
+
+    static create(json) {
+        this.name = json.name;
+        this.tag = json.tag;
+        _description.set(this, data.description);
+    }
 }
 
 export default Room;

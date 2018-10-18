@@ -1,0 +1,18 @@
+---
+name: Escape Room
+tag: room
+directions: {
+    north: north wall,
+    east: east wall,
+    south: south wall,
+    west: door
+}
+items:
+ - grate
+ - metal pipe
+ - puddle
+ - wires
+ - drip    
+---
+
+You are stuck inside an industrial space.  Everywhere you can see rusted metal pipes, multi-colored wires hanging in disarray and puddles of unknown substances on the floor.  The light above is flickering and the there is the sound of dripping water coming from someplace unknown.  There is only one exit to the west and it is locked.\n\n There is a grate on the north wall that looks like it might fall off at any time.
