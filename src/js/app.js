@@ -1,26 +1,21 @@
 import Vue from 'vue';
 import BootstrapVue from 'bootstrap-vue';
 import VueEvents from 'vue-events';
-import VueRouter from 'vue-router';
+import Vuex from 'vuex'
 
-import routes from './routes';
-
-import Display from './components/display';
-import CommandLine from './components/command-line';
+import Game from './components/game';
 
 Vue.use(BootstrapVue);
 Vue.use(VueEvents);
-Vue.use(VueRouter);
+Vue.use(Vuex);
 
-const router = new VueRouter({
-    routes // short for `routes: routes`
-});
+import store from './store';
+
 
 const app = new Vue({
     el: '#app',
-    router,
+    store,
     components: {
-        Display,
-        CommandLine,
+        Game,
     }
 });
