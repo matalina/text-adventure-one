@@ -12,5 +12,5 @@ A recent leak from Allied Corporation, the oldest and strongest of the megacorps
 **Do you wish to undertake this mission?** 
         `,
     exit: 'yes',
-    next: `Thank you for undertaking this mission.  Allied Corporation will pay hansomely for any information regarding their missing 'x'.`
+    next: `Your acceptance has been noted, Allied Corporation will pay handsomely for any information regarding their missing property.`
 };

@@ -3,7 +3,7 @@
         <main class="row">
             <div class="col-lg-2"></div>
             <div id="display" class="p-5 col-lg-8">
-                <div v-for="d in display">
+                <div v-for="d in story">
                     <div :class="d.type"
                          v-html="markdown(d.text)"
                     ></div>
@@ -27,6 +27,13 @@
                            @change="execute()"
                            autofocus
                     />
+                    <div class="input-group-append">
+                        <button class="btn btn-danger"
+                                @click="reset()"
+                        >
+                            Reset
+                        </button>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -38,7 +45,11 @@
     import verbs from '../game/character/verbs';
     import { mapState } from 'vuex';
     const MarkdownIt = require('markdown-it'),
-        md = new MarkdownIt();
+        md = new MarkdownIt({
+            html:         true,        // Enable HTML tags in source
+            xhtmlOut:     true,        // Use '/' to close single tags (<br />).
+
+        });
 
     export default {
         name: 'display',
@@ -73,55 +84,73 @@
             markdown(output) {
                 return md.render(output);
             },
-            execute() {
-                this.parseCommand();
+            reset() {
+                this.$store.commit('reset');
             },
-            parseCommand() {
+            execute() {
                 let words = this.command.split(' '),
                         verb = words[0],
-                        remainder = words.splice(1),
-                    exit = this.chapters[this.progress].exit;
+                        remainder = words.splice(1);
 
-                if(words.indexOf(exit) !== -1) {
-                    let progress = this.progress,
-                        text = this.chapters[progress].next;
+                this.saveStory({
+                    type: 'command',
+                    text: `<i class="fal fa-fw fa-terminal"></i> ${this.command}`,
+                });
+
+                if(this.isExit()) {
+                    this.exit();
+                }
+                else if(this.validateVerb(verb)) {
+                    let action = this.verbs[verb];
+
                     this.saveStory({
                         type: 'action',
-                        text,
+                        text: action(remainder),
                     });
-
-                    if(this.chapters[progress + 1] !== undefined) {
-                        this.saveStory({
-                            type: 'chapter',
-                            object: this.chapters[progress + 1],
-                            text: this.chapters[progress + 1].description,
-                        });
-                        this.saveProgress(progress + 1);
-                    }
-                    else {
-                        this.saveStory({
-                            type: 'the-end',
-                            text: `# The End`
-                        });
-                    }
-
-                    this.command = '';
-                    return;
-                }
-
-                if(this.validateVerb(verb)) {
-                    this.verb = verb;
                 }
                 else {
-                    alert('Unable to understand your directive.');
-                    this.command = '';
-                    return;
+                    this.saveStory({
+                        type: 'error',
+                        text: `<i class='fal fa-fw fa-exclamation-triangle'></i> ${verb} directive is unknown.  Please start with a verb or a question word.`,
+                    });
                 }
 
                 this.command = '';
             },
+            // validation
             validateVerb(verb) {
                 return typeof this.verbs[verb] === 'function';
+            },
+            isExit() {
+                let exit = this.chapters[this.progress].exit,
+                    pattern = new RegExp(exit,'ig');
+
+                return this.command.search(pattern) !== -1;
+            },
+
+            // end game
+            exit() {
+                let progress = this.progress,
+                    text = this.chapters[progress].next;
+                this.saveStory({
+                    type: 'action',
+                    text,
+                });
+
+                if(this.chapters[progress + 1] !== undefined) {
+                    this.saveStory({
+                        type: 'chapter',
+                        object: this.chapters[progress + 1],
+                        text: this.chapters[progress + 1].description,
+                    });
+                    this.saveProgress(progress + 1);
+                }
+                else {
+                    this.saveStory({
+                        type: 'the-end',
+                        text: `# The End`
+                    });
+                }
             },
 
             // state saving
@@ -136,17 +165,5 @@
 </script>
 
 <style lang="scss">
-    #game {
-        margin-top: 5rem;
-        margin-bottom: 3rem;
-        background: rgba(0,0,0,.5);
-        color: #EC5800;
-    }
-    #command-line {
-        background: rgba(0,0,0, .5);
-        color: #EC5800;
-        border: 1px solid transparent;
-        border-bottom: 1px solid #EC5800;
-    }
 
 </style>

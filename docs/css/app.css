@@ -16711,3 +16711,27 @@ body {
 .f9 {
   font-family: 'Megrim', cursive;
 }
+
+#game {
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: #EC5800;
+}
+
+#command-line {
+  background: rgba(0, 0, 0, 0.5);
+  color: #EC5800;
+  border: 1px solid transparent;
+  border-bottom: 1px solid #EC5800;
+}
+
+.command {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.error {
+  color: #dc3545;
+  font-weight: bold;
+}

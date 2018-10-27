@@ -133,7 +133,7 @@ exports = module.exports = __webpack_require__(19)(false);
 
 
 // module
-exports.push([module.i, "\n#game {\n  margin-top: 5rem;\n  margin-bottom: 3rem;\n  background: rgba(0, 0, 0, 0.5);\n  color: #EC5800;\n}\n#command-line {\n  background: rgba(0, 0, 0, 0.5);\n  color: #EC5800;\n  border: 1px solid transparent;\n  border-bottom: 1px solid #EC5800;\n}\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -558,12 +558,23 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
 
 var MarkdownIt = __webpack_require__(86),
-    md = new MarkdownIt();
+    md = new MarkdownIt({
+    html: true, // Enable HTML tags in source
+    xhtmlOut: true // Use '/' to close single tags (<br />).
+
+});
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'display',
@@ -588,53 +599,72 @@ var MarkdownIt = __webpack_require__(86),
         markdown: function markdown(output) {
             return md.render(output);
         },
-        execute: function execute() {
-            this.parseCommand();
+        reset: function reset() {
+            this.$store.commit('reset');
         },
-        parseCommand: function parseCommand() {
+        execute: function execute() {
             var words = this.command.split(' '),
                 verb = words[0],
-                remainder = words.splice(1),
-                exit = this.chapters[this.progress].exit;
+                remainder = words.splice(1);
 
-            if (words.indexOf(exit) !== -1) {
-                var progress = this.progress,
-                    text = this.chapters[progress].next;
+            this.saveStory({
+                type: 'command',
+                text: '<i class="fal fa-fw fa-terminal"></i> ' + this.command
+            });
+
+            if (this.isExit()) {
+                this.exit();
+            } else if (this.validateVerb(verb)) {
+                var action = this.verbs[verb];
+
                 this.saveStory({
                     type: 'action',
-                    text: text
+                    text: action(remainder)
                 });
-
-                if (this.chapters[progress + 1] !== undefined) {
-                    this.saveStory({
-                        type: 'chapter',
-                        object: this.chapters[progress + 1],
-                        text: this.chapters[progress + 1].description
-                    });
-                    this.saveProgress(progress + 1);
-                } else {
-                    this.saveStory({
-                        type: 'the-end',
-                        text: '# The End'
-                    });
-                }
-
-                this.command = '';
-                return;
-            }
-
-            if (this.validateVerb(verb)) {
-                this.verb = verb;
             } else {
-                alert('Unable to understand your directive.');
-                this.command = '';
-                return;
+                this.saveStory({
+                    type: 'error',
+                    text: '<i class=\'fal fa-fw fa-exclamation-triangle\'></i> ' + verb + ' directive is unknown.  Please start with a verb or a question word.'
+                });
             }
 
             this.command = '';
         },
+
+        // validation
         validateVerb: function validateVerb(verb) {
             return typeof this.verbs[verb] === 'function';
+        },
+        isExit: function isExit() {
+            var exit = this.chapters[this.progress].exit,
+                pattern = new RegExp(exit, 'ig');
+
+            return this.command.search(pattern) !== -1;
+        },
+
+
+        // end game
+        exit: function exit() {
+            var progress = this.progress,
+                text = this.chapters[progress].next;
+            this.saveStory({
+                type: 'action',
+                text: text
+            });
+
+            if (this.chapters[progress + 1] !== undefined) {
+                this.saveStory({
+                    type: 'chapter',
+                    object: this.chapters[progress + 1],
+                    text: this.chapters[progress + 1].description
+                });
+                this.saveProgress(progress + 1);
+            } else {
+                this.saveStory({
+                    type: 'the-end',
+                    text: '# The End'
+                });
+            }
         },
 
 
@@ -665,12 +695,27 @@ var MarkdownIt = __webpack_require__(86),
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    look: function look(object) {
-        return object.description;
+var verbs = {
+    help: function help(words) {
+        return 'You ask for help.';
     },
-    l: this.look
-});
+
+    look: function look(words) {
+        return 'You look around.';
+    },
+    l: function l(words) {
+        return verbs.look(words);
+    },
+
+    reset: function reset(words) {
+        return 'You ask to reset the game but are denied.';
+    },
+    restart: function restart(words) {
+        return verbs.reset(words);
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (verbs);
 
 /***/ }),
 
@@ -688,7 +733,7 @@ var render = function() {
       _c(
         "div",
         { staticClass: "p-5 col-lg-8", attrs: { id: "display" } },
-        _vm._l(_vm.display, function(d) {
+        _vm._l(_vm.story, function(d) {
           return _c("div", [
             _c("div", {
               class: d.type,
@@ -737,7 +782,26 @@ var render = function() {
                   _vm.command = $event.target.value
                 }
               }
-            })
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-group-append" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger",
+                  on: {
+                    click: function($event) {
+                      _vm.reset()
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        Reset\n                    "
+                  )
+                ]
+              )
+            ])
           ])
         ])
       ]
@@ -805,6 +869,15 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
         'progress-update': function progressUpdate(state, progress) {
             state.progress = progress;
+        },
+        'reset': function reset(state) {
+            state.story = [{
+                type: 'chapter',
+                object: __WEBPACK_IMPORTED_MODULE_4__game_chapters_000__["a" /* default */],
+                text: __WEBPACK_IMPORTED_MODULE_4__game_chapters_000__["a" /* default */].description
+            }];
+            state.character = __WEBPACK_IMPORTED_MODULE_3__game_character_character__["a" /* default */];
+            state.progress = 0;
         }
     }
 }));
@@ -902,7 +975,7 @@ var character = {
     title: 'the search for x',
     description: '\n# The Search for X\n\nIt is the 3121 and Earth is overpopulated.  78 billion people and growing live on the dead rock that is now Earth.  The ice caps have melted and the water that remains is polluted.  Only a giant city remains across the planet.  The governments of the twenty-first century have fallen replaced by six mega-corporations that control all aspects of life including births and deaths.  \n\nLife begin and end at prestige rating of zero. It is a constant race to see who is better, or worse, and who is ultimately worthy of surviving until a ripe old age.\n\nA recent leak from Allied Corporation, the oldest and strongest of the megacorps, reveals they are searching for something referred to as \'X\'.  You are one of the first few to learn of this development.  \n\n**Do you wish to undertake this mission?** \n        ',
     exit: 'yes',
-    next: 'Thank you for undertaking this mission.  Allied Corporation will pay hansomely for any information regarding their missing \'x\'.'
+    next: 'Your acceptance has been noted, Allied Corporation will pay handsomely for any information regarding their missing property.'
 });
 
 /***/ })

@@ -27,5 +27,16 @@ export default new Vuex.Store({
         'progress-update': function(state, progress) {
             state.progress = progress;
         },
+        'reset': function(state) {
+            state.story = [
+                {
+                    type: 'chapter',
+                    object: start,
+                    text: start.description,
+                }
+            ];
+            state.character = character;
+            state.progress = 0;
+        }
     }
 });
