@@ -1,15 +1,15 @@
 webpackJsonp([1],{
 
-/***/ 105:
+/***/ 107:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(106);
-module.exports = __webpack_require__(239);
+__webpack_require__(108);
+module.exports = __webpack_require__(295);
 
 
 /***/ }),
 
-/***/ 106:
+/***/ 108:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20,9 +20,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_events__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_events___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_events__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vuex__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_game__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_game__ = __webpack_require__(224);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_game___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_game__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store__ = __webpack_require__(289);
 
 
 
@@ -46,25 +46,25 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 
 /***/ }),
 
-/***/ 222:
+/***/ 224:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(223)
+  __webpack_require__(225)
 }
-var normalizeComponent = __webpack_require__(227)
+var normalizeComponent = __webpack_require__(229)
 /* script */
-var __vue_script__ = __webpack_require__(228)
+var __vue_script__ = __webpack_require__(230)
 /* template */
-var __vue_template__ = __webpack_require__(232)
+var __vue_template__ = __webpack_require__(288)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-579900c4"
+var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -98,23 +98,23 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 223:
+/***/ 225:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(224);
+var content = __webpack_require__(226);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(225)("aeba967a", content, false, {});
+var update = __webpack_require__(227)("73e24b0a", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-579900c4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/sass-loader/lib/loader.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./game.vue", function() {
-     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-579900c4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/sass-loader/lib/loader.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./game.vue");
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-579900c4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/sass-loader/lib/loader.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./game.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-579900c4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/sass-loader/lib/loader.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./game.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -125,7 +125,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 224:
+/***/ 226:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(19)(false);
@@ -133,14 +133,14 @@ exports = module.exports = __webpack_require__(19)(false);
 
 
 // module
-exports.push([module.i, "\n#display[data-v-579900c4] {\n  height: 100%;\n  overflow: hidden;\n}\n#display #story[data-v-579900c4] {\n    height: 100%;\n    overflow-y: scroll;\n    overflow-x: hidden;\n    width: calc(100% + 50px);\n    padding-right: 50px;\n}\n", ""]);
+exports.push([module.i, "\nhtml, body {\n  height: 100%;\n}\nbody {\n  margin: 0;\n  height: 100%;\n  background: url(http://www.aliciawilkerson.com/images/metalwall.jpg) #000 no-repeat center center fixed;\n  background-size: cover;\n}\n.title {\n  font-size: 5rem;\n  font-weight: normal;\n  margin: 0;\n  padding: 0;\n  color: #EC5800;\n  display: block;\n  text-shadow: 0 0 5px #EC5800, 0 0 6px #EC5800, 0 0 7px #EC5800, 0 0 15px #EC5800;\n  position: relative;\n}\n.tag-line {\n  font-size: 2rem;\n  margin: 0;\n  padding: 0 20px 0 0;\n  display: block;\n  color: #EC5800;\n}\n.f1 {\n  font-family: 'Advent Pro', sans-serif;\n  line-height: 1.9rem;\n}\n.f2 {\n  font-family: 'Share Tech', sans-serif;\n}\n.f9 {\n  font-family: 'Megrim', cursive;\n}\n.coming-soon {\n  background: url(http://aliciawilkerson.com/images/cyberpunk.png) no-repeat center center fixed;\n  background-size: cover;\n  height: 100%;\n  text-align: center;\n}\n.blurb {\n  max-width: 800px;\n  background: #fff;\n  padding: 20px;\n  font-size: 18pt;\n  margin: auto;\n  margin-top: 20px;\n}\n.border1 {\n  border: 15px solid transparent;\n  -webkit-border-image: url(\"http://aliciawilkerson.com/images/orangecircuit.png\") 20 20 round;\n  margin-bottom: 100px;\n}\n#command-line {\n  background: rgba(0, 0, 0, 0.5);\n  color: #EC5800;\n  border: 1px solid transparent;\n  border-bottom: 1px solid #EC5800;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 225:
+/***/ 227:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -159,7 +159,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(226)
+var listToStyles = __webpack_require__(228)
 
 /*
 type StyleObject = {
@@ -369,7 +369,7 @@ function applyToTag (styleElement, obj) {
 
 /***/ }),
 
-/***/ 226:
+/***/ 228:
 /***/ (function(module, exports) {
 
 /**
@@ -403,7 +403,7 @@ module.exports = function listToStyles (parentId, list) {
 
 /***/ }),
 
-/***/ 227:
+/***/ 229:
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -513,13 +513,13 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 228:
+/***/ 230:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__game_chapters__ = __webpack_require__(229);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__game_character_verbs__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__game_chapters__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__game_character_verbs__ = __webpack_require__(232);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(30);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -543,10 +543,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
 
+var MarkdownIt = __webpack_require__(86),
+    md = new MarkdownIt();
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'display',
@@ -557,11 +564,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         };
     },
     computed: _extends({
+        display: function display() {
+            return this.story.reverse();
+        },
         verbs: function verbs() {
             return _extends({}, __WEBPACK_IMPORTED_MODULE_1__game_character_verbs__["a" /* default */], this.character.verbs, this.character.profession.verbs, this.character.mutation.verbs);
+        },
+        start: function start() {
+            return this.chapters[0];
         }
     }, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["mapState"])(['story', 'progress', 'character'])),
     methods: {
+        markdown: function markdown(output) {
+            return md.render(output);
+        },
         execute: function execute() {
             this.parseCommand();
         },
@@ -586,43 +602,23 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         saveProgress: function saveProgress(chapter_number) {
             this.$store.commit('progress-update', chapter_number);
         }
-    },
-    mounted: function mounted() {
-        if (this.story === []) {
-            this.saveStory({
-                type: 'chapter',
-                object: this.chapters[0]
-            });
-        }
     }
 });
 
 /***/ }),
 
-/***/ 229:
+/***/ 231:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__chapters_000__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__chapters_000__ = __webpack_require__(85);
 
 
 /* harmony default export */ __webpack_exports__["a"] = ([__WEBPACK_IMPORTED_MODULE_0__chapters_000__["a" /* default */]]);
 
 /***/ }),
 
-/***/ 230:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    title: 'the search for x',
-    description: '\n# The Search for X\n\nIt is the 3121 and Earth is overpopulated.  78 billion people and growing live on the dead rock that is now Earth.  The ice caps have melted and the water that remains is polluted.  Only a giant city remains across the planet.  The governments of the twenty-first century have fallen replaced by six mega-corporations that control all aspects of life including births and deaths.  \n\nLives begin and end at prestige rating of zero. Every year up to your 25th birthday you receive one prestige rating just for living.  After the age of 25 your lose two prestige. A person who does nothing with their lives will be terminated at age 37, but it is possible to earn prestige through your profession or buy it if you are rich enough.  But in the same manner it is also possible to lose prestige through your failures.\n\nA recent leak from Allied Corporation, the oldest and strongest of the megacorps, reveals they are searching for something called \'X\'.  You are one of the first few to learn of this development.  Do you wish to undertake this mission? \n        ',
-    exit: 'yes'
-});
-
-/***/ }),
-
-/***/ 231:
+/***/ 232:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -635,7 +631,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /***/ }),
 
-/***/ 232:
+/***/ 288:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -643,7 +639,22 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "game" } }, [
-    _vm._m(0),
+    _c("main", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "pb-5", attrs: { id: "display" } },
+        _vm._l(_vm.display, function(d) {
+          return _c("div", [
+            _c("div", {
+              class: d.type,
+              domProps: {
+                innerHTML: _vm._s(_vm.markdown(d.object.description))
+              }
+            })
+          ])
+        })
+      )
+    ]),
     _vm._v(" "),
     _c(
       "nav",
@@ -660,7 +671,11 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", placeholder: "What do you want to do?" },
+            attrs: {
+              id: "command-line",
+              type: "text",
+              placeholder: "What do you want to do?"
+            },
             domProps: { value: _vm.command },
             on: {
               change: function($event) {
@@ -679,16 +694,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("main", { staticClass: "row" }, [
-      _c("div", { staticClass: "pb-5", attrs: { id: "display" } })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -700,15 +706,16 @@ if (false) {
 
 /***/ }),
 
-/***/ 233:
+/***/ 289:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex_persistedstate__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__game_character_character__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex_persistedstate__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__game_character_character__ = __webpack_require__(292);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__game_chapters_000__ = __webpack_require__(85);
 
 
 
@@ -717,10 +724,14 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 
 
 
+
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vuex__["default"].Store({
     plugins: [Object(__WEBPACK_IMPORTED_MODULE_2_vuex_persistedstate__["default"])()],
     state: {
-        story: [],
+        story: [{
+            type: 'chapter',
+            object: __WEBPACK_IMPORTED_MODULE_4__game_chapters_000__["a" /* default */]
+        }],
         character: __WEBPACK_IMPORTED_MODULE_3__game_character_character__["a" /* default */],
         progress: 0
     },
@@ -736,12 +747,12 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 
 /***/ }),
 
-/***/ 236:
+/***/ 292:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__hunter__ = __webpack_require__(237);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__aphen__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__hunter__ = __webpack_require__(293);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__aphen__ = __webpack_require__(294);
 
 
 
@@ -784,7 +795,7 @@ var character = {
 
 /***/ }),
 
-/***/ 237:
+/***/ 293:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -797,7 +808,7 @@ var character = {
 
 /***/ }),
 
-/***/ 238:
+/***/ 294:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -812,11 +823,23 @@ var character = {
 
 /***/ }),
 
-/***/ 239:
+/***/ 295:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
+/***/ }),
+
+/***/ 85:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    title: 'the search for x',
+    description: '\n# The Search for X\n\nIt is the 3121 and Earth is overpopulated.  78 billion people and growing live on the dead rock that is now Earth.  The ice caps have melted and the water that remains is polluted.  Only a giant city remains across the planet.  The governments of the twenty-first century have fallen replaced by six mega-corporations that control all aspects of life including births and deaths.  \n\nLives begin and end at prestige rating of zero. Every year up to your 25th birthday you receive one prestige rating just for living.  After the age of 25 your lose two prestige. A person who does nothing with their lives will be terminated at age 37, but it is possible to earn prestige through your profession or buy it if you are rich enough.  But in the same manner it is also possible to lose prestige through your failures.\n\nA recent leak from Allied Corporation, the oldest and strongest of the megacorps, reveals they are searching for something called \'X\'.  You are one of the first few to learn of this development.  Do you wish to undertake this mission? \n        ',
+    exit: 'yes'
+});
+
 /***/ })
 
-},[105]);
+},[107]);

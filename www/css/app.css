@@ -10466,10 +10466,3 @@ a.text-dark:focus {
   }
 }
 
-main,
-html,
-body,
-#app {
-  height: 100%;
-}
-

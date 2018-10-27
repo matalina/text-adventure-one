@@ -5,11 +5,17 @@ import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vuex);
 
 import character from '../game/character/character';
+import start from '../game/chapters/000';
 
 export default new Vuex.Store({
     plugins: [createPersistedState()],
     state: {
-        story: [],
+        story: [
+            {
+                type: 'chapter',
+                object: start,
+            }
+        ],
         character,
         progress: 0,
     },
