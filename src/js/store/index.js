@@ -14,6 +14,7 @@ export default new Vuex.Store({
             {
                 type: 'chapter',
                 object: start,
+                text: start.description,
             }
         ],
         character,

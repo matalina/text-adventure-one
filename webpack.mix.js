@@ -19,6 +19,7 @@ mix.js('src/js/app.js', 'www/js/')
         .sass('src/scss/app.scss', 'www/css')
         .copy('src/index.html', 'www/index.html')
     .copy('src/images','www/images')
+    .copy('node_modules/@fortawesome/fontawesome-pro/webfonts/', 'www/webfonts/')
     .copy('www/', 'docs/');
 
 

@@ -5,7 +5,7 @@
             <div id="display" class="p-5 col-lg-8">
                 <div v-for="d in display">
                     <div :class="d.type"
-                         v-html="markdown(d.object.description)"
+                         v-html="markdown(d.text)"
                     ></div>
                 </div>
             </div>
@@ -13,13 +13,21 @@
         </main>
         <nav class="navbar fixed-bottom navbar-expand navbar-dark bg-dark">
             <div class="nav-item form-group my-2 w-100">
-                <input class="form-control"
-                       id="command-line"
-                       type="text"
-                       placeholder="What do you want to do?"
-                       v-model="command"
-                       @change="execute()"
-                />
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-dark text-primary border-dark">
+                            <i class="fal fa-fw fa-angle-right"></i>
+                        </div>
+                    </div>
+                    <input class="form-control"
+                           id="command-line"
+                           type="text"
+                           placeholder="What do you want to do?"
+                           v-model="command"
+                           @change="execute()"
+                           autofocus
+                    />
+                </div>
             </div>
         </nav>
     </div>
@@ -71,14 +79,46 @@
             parseCommand() {
                 let words = this.command.split(' '),
                         verb = words[0],
-                        remainder = words.splice(1);
+                        remainder = words.splice(1),
+                    exit = this.chapters[this.progress].exit;
+
+                if(words.indexOf(exit) !== -1) {
+                    let progress = this.progress,
+                        text = this.chapters[progress].next;
+                    this.saveStory({
+                        type: 'action',
+                        text,
+                    });
+
+                    if(this.chapters[progress + 1] !== undefined) {
+                        this.saveStory({
+                            type: 'chapter',
+                            object: this.chapters[progress + 1],
+                            text: this.chapters[progress + 1].description,
+                        });
+                        this.saveProgress(progress + 1);
+                    }
+                    else {
+                        this.saveStory({
+                            type: 'the-end',
+                            text: `# The End`
+                        });
+                    }
+
+                    this.command = '';
+                    return;
+                }
 
                 if(this.validateVerb(verb)) {
                     this.verb = verb;
                 }
                 else {
-
+                    alert('Unable to understand your directive.');
+                    this.command = '';
+                    return;
                 }
+
+                this.command = '';
             },
             validateVerb(verb) {
                 return typeof this.verbs[verb] === 'function';

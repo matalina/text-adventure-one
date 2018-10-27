@@ -550,6 +550,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -586,11 +594,44 @@ var MarkdownIt = __webpack_require__(86),
         parseCommand: function parseCommand() {
             var words = this.command.split(' '),
                 verb = words[0],
-                remainder = words.splice(1);
+                remainder = words.splice(1),
+                exit = this.chapters[this.progress].exit;
+
+            if (words.indexOf(exit) !== -1) {
+                var progress = this.progress,
+                    text = this.chapters[progress].next;
+                this.saveStory({
+                    type: 'action',
+                    text: text
+                });
+
+                if (this.chapters[progress + 1] !== undefined) {
+                    this.saveStory({
+                        type: 'chapter',
+                        object: this.chapters[progress + 1],
+                        text: this.chapters[progress + 1].description
+                    });
+                    this.saveProgress(progress + 1);
+                } else {
+                    this.saveStory({
+                        type: 'the-end',
+                        text: '# The End'
+                    });
+                }
+
+                this.command = '';
+                return;
+            }
 
             if (this.validateVerb(verb)) {
                 this.verb = verb;
-            } else {}
+            } else {
+                alert('Unable to understand your directive.');
+                this.command = '';
+                return;
+            }
+
+            this.command = '';
         },
         validateVerb: function validateVerb(verb) {
             return typeof this.verbs[verb] === 'function';
@@ -651,9 +692,7 @@ var render = function() {
           return _c("div", [
             _c("div", {
               class: d.type,
-              domProps: {
-                innerHTML: _vm._s(_vm.markdown(d.object.description))
-              }
+              domProps: { innerHTML: _vm._s(_vm.markdown(d.text)) }
             })
           ])
         })
@@ -667,40 +706,58 @@ var render = function() {
       { staticClass: "navbar fixed-bottom navbar-expand navbar-dark bg-dark" },
       [
         _c("div", { staticClass: "nav-item form-group my-2 w-100" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.command,
-                expression: "command"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              id: "command-line",
-              type: "text",
-              placeholder: "What do you want to do?"
-            },
-            domProps: { value: _vm.command },
-            on: {
-              change: function($event) {
-                _vm.execute()
-              },
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c("div", { staticClass: "input-group" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.command,
+                  expression: "command"
                 }
-                _vm.command = $event.target.value
+              ],
+              staticClass: "form-control",
+              attrs: {
+                id: "command-line",
+                type: "text",
+                placeholder: "What do you want to do?",
+                autofocus: ""
+              },
+              domProps: { value: _vm.command },
+              on: {
+                change: function($event) {
+                  _vm.execute()
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.command = $event.target.value
+                }
               }
-            }
-          })
+            })
+          ])
         ])
       ]
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c(
+        "div",
+        { staticClass: "input-group-text bg-dark text-primary border-dark" },
+        [_c("i", { staticClass: "fal fa-fw fa-angle-right" })]
+      )
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -736,7 +793,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
     state: {
         story: [{
             type: 'chapter',
-            object: __WEBPACK_IMPORTED_MODULE_4__game_chapters_000__["a" /* default */]
+            object: __WEBPACK_IMPORTED_MODULE_4__game_chapters_000__["a" /* default */],
+            text: __WEBPACK_IMPORTED_MODULE_4__game_chapters_000__["a" /* default */].description
         }],
         character: __WEBPACK_IMPORTED_MODULE_3__game_character_character__["a" /* default */],
         progress: 0
@@ -842,8 +900,9 @@ var character = {
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     title: 'the search for x',
-    description: '\n# The Search for X\n\nIt is the 3121 and Earth is overpopulated.  78 billion people and growing live on the dead rock that is now Earth.  The ice caps have melted and the water that remains is polluted.  Only a giant city remains across the planet.  The governments of the twenty-first century have fallen replaced by six mega-corporations that control all aspects of life including births and deaths.  \n\nLives begin and end at prestige rating of zero. Every year up to your 25th birthday you receive one prestige rating just for living.  After the age of 25 your lose two prestige. A person who does nothing with their lives will be terminated at age 37, but it is possible to earn prestige through your profession or buy it if you are rich enough.  But in the same manner it is also possible to lose prestige through your failures.\n\nA recent leak from Allied Corporation, the oldest and strongest of the megacorps, reveals they are searching for something called \'X\'.  You are one of the first few to learn of this development.  Do you wish to undertake this mission? \n        ',
-    exit: 'yes'
+    description: '\n# The Search for X\n\nIt is the 3121 and Earth is overpopulated.  78 billion people and growing live on the dead rock that is now Earth.  The ice caps have melted and the water that remains is polluted.  Only a giant city remains across the planet.  The governments of the twenty-first century have fallen replaced by six mega-corporations that control all aspects of life including births and deaths.  \n\nLife begin and end at prestige rating of zero. It is a constant race to see who is better, or worse, and who is ultimately worthy of surviving until a ripe old age.\n\nA recent leak from Allied Corporation, the oldest and strongest of the megacorps, reveals they are searching for something referred to as \'X\'.  You are one of the first few to learn of this development.  \n\n**Do you wish to undertake this mission?** \n        ',
+    exit: 'yes',
+    next: 'Thank you for undertaking this mission.  Allied Corporation will pay hansomely for any information regarding their missing \'x\'.'
 });
 
 /***/ })
