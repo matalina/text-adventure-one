@@ -1,13 +1,15 @@
 <template>
     <div id="game">
         <main class="row">
-            <div id="display" class="pb-5">
+            <div class="col-lg-2"></div>
+            <div id="display" class="p-5 col-lg-8">
                 <div v-for="d in display">
                     <div :class="d.type"
                          v-html="markdown(d.object.description)"
                     ></div>
                 </div>
             </div>
+            <div class="col-lg-2"></div>
         </main>
         <nav class="navbar fixed-bottom navbar-expand navbar-dark bg-dark">
             <div class="nav-item form-group my-2 w-100">
@@ -94,65 +96,12 @@
 </script>
 
 <style lang="scss">
-    html, body{
-        height: 100%;
-    }
-    body {
-        margin: 0;
-        height: 100%;
-        background: url(http://www.aliciawilkerson.com/images/metalwall.jpg) #000 no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-    }
-    .title {
-        font-size: 5rem;
-        font-weight: normal;
-        margin: 0;
-        padding: 0;
-        color: #EC5800;
-        display: block;
-        text-shadow: 0 0 5px #EC5800, 0 0 6px #EC5800, 0 0 7px #EC5800, 0 0 15px #EC5800;
-        position: relative;
-    }
-    .tag-line {
-        font-size: 2rem;
-        margin: 0;
-        padding: 0 20px 0 0;
-        display: block;
+    #game {
+        margin-top: 5rem;
+        margin-bottom: 3rem;
+        background: rgba(0,0,0,.5);
         color: #EC5800;
     }
-    .f1 {
-        font-family: 'Advent Pro', sans-serif;
-        line-height: 1.9rem;
-    }
-    .f2 {font-family: 'Share Tech', sans-serif;}
-    .f9 {font-family: 'Megrim', cursive;}
-    .coming-soon {
-        background: url(http://aliciawilkerson.com/images/cyberpunk.png)no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        height: 100%;
-        text-align: center;
-    }
-
-    .blurb {
-        max-width: 800px;
-        background: #fff;
-        padding: 20px;
-        font-size: 18pt;
-        margin: auto;
-        margin-top: 20px;
-    }
-    .border1 {
-        border: 15px solid transparent;
-        -webkit-border-image: url('http://aliciawilkerson.com/images/orangecircuit.png') 20 20 round;
-        margin-bottom: 100px;
-    }
-
     #command-line {
         background: rgba(0,0,0, .5);
         color: #EC5800;

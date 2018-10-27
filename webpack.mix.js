@@ -11,11 +11,14 @@ let mix = require('laravel-mix');
  |
  */
 
+mix.options({ processCssUrls: false });
+
 mix.js('src/js/app.js', 'www/js/')
         .extract(['vue','vue-router','vuex','vuex-persistedstate', 'vue-events',
             'axios','bootstrap-vue', 'markdown-it','gray-matter','typeit'])
         .sass('src/scss/app.scss', 'www/css')
         .copy('src/index.html', 'www/index.html')
+    .copy('src/images','www/images')
     .copy('www/', 'docs/');
 
 

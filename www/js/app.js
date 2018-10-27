@@ -133,7 +133,7 @@ exports = module.exports = __webpack_require__(19)(false);
 
 
 // module
-exports.push([module.i, "\nhtml, body {\n  height: 100%;\n}\nbody {\n  margin: 0;\n  height: 100%;\n  background: url(http://www.aliciawilkerson.com/images/metalwall.jpg) #000 no-repeat center center fixed;\n  background-size: cover;\n}\n.title {\n  font-size: 5rem;\n  font-weight: normal;\n  margin: 0;\n  padding: 0;\n  color: #EC5800;\n  display: block;\n  text-shadow: 0 0 5px #EC5800, 0 0 6px #EC5800, 0 0 7px #EC5800, 0 0 15px #EC5800;\n  position: relative;\n}\n.tag-line {\n  font-size: 2rem;\n  margin: 0;\n  padding: 0 20px 0 0;\n  display: block;\n  color: #EC5800;\n}\n.f1 {\n  font-family: 'Advent Pro', sans-serif;\n  line-height: 1.9rem;\n}\n.f2 {\n  font-family: 'Share Tech', sans-serif;\n}\n.f9 {\n  font-family: 'Megrim', cursive;\n}\n.coming-soon {\n  background: url(http://aliciawilkerson.com/images/cyberpunk.png) no-repeat center center fixed;\n  background-size: cover;\n  height: 100%;\n  text-align: center;\n}\n.blurb {\n  max-width: 800px;\n  background: #fff;\n  padding: 20px;\n  font-size: 18pt;\n  margin: auto;\n  margin-top: 20px;\n}\n.border1 {\n  border: 15px solid transparent;\n  -webkit-border-image: url(\"http://aliciawilkerson.com/images/orangecircuit.png\") 20 20 round;\n  margin-bottom: 100px;\n}\n#command-line {\n  background: rgba(0, 0, 0, 0.5);\n  color: #EC5800;\n  border: 1px solid transparent;\n  border-bottom: 1px solid #EC5800;\n}\n", ""]);
+exports.push([module.i, "\n#game {\n  margin-top: 5rem;\n  margin-bottom: 3rem;\n  background: rgba(0, 0, 0, 0.5);\n  color: #EC5800;\n}\n#command-line {\n  background: rgba(0, 0, 0, 0.5);\n  color: #EC5800;\n  border: 1px solid transparent;\n  border-bottom: 1px solid #EC5800;\n}\n", ""]);
 
 // exports
 
@@ -548,6 +548,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -640,9 +642,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "game" } }, [
     _c("main", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-2" }),
+      _vm._v(" "),
       _c(
         "div",
-        { staticClass: "pb-5", attrs: { id: "display" } },
+        { staticClass: "p-5 col-lg-8", attrs: { id: "display" } },
         _vm._l(_vm.display, function(d) {
           return _c("div", [
             _c("div", {
@@ -653,7 +657,9 @@ var render = function() {
             })
           ])
         })
-      )
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-2" })
     ]),
     _vm._v(" "),
     _c(
