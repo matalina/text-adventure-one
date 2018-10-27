@@ -39,7 +39,7 @@ const character = {
     ],
     verbs: {
         mouse: function(do_something) {
-
+            return `M0U53 doesn't understand what you are asking of her.`
         },
     },
 };

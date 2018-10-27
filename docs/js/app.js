@@ -1,15 +1,15 @@
 webpackJsonp([1],{
 
-/***/ 107:
+/***/ 108:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(108);
+__webpack_require__(109);
 module.exports = __webpack_require__(295);
 
 
 /***/ }),
 
-/***/ 108:
+/***/ 109:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20,9 +20,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_events__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_events___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_events__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vuex__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_game__ = __webpack_require__(224);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_game__ = __webpack_require__(225);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_game___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_game__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store__ = __webpack_require__(289);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store__ = __webpack_require__(86);
 
 
 
@@ -46,19 +46,19 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 
 /***/ }),
 
-/***/ 224:
+/***/ 225:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(225)
+  __webpack_require__(226)
 }
-var normalizeComponent = __webpack_require__(229)
+var normalizeComponent = __webpack_require__(230)
 /* script */
-var __vue_script__ = __webpack_require__(230)
+var __vue_script__ = __webpack_require__(231)
 /* template */
-var __vue_template__ = __webpack_require__(288)
+var __vue_template__ = __webpack_require__(294)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -98,17 +98,17 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 225:
+/***/ 226:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(226);
+var content = __webpack_require__(227);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(227)("73e24b0a", content, false, {});
+var update = __webpack_require__(228)("73e24b0a", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -125,7 +125,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 226:
+/***/ 227:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(19)(false);
@@ -140,7 +140,7 @@ exports.push([module.i, "", ""]);
 
 /***/ }),
 
-/***/ 227:
+/***/ 228:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -159,7 +159,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(228)
+var listToStyles = __webpack_require__(229)
 
 /*
 type StyleObject = {
@@ -369,7 +369,7 @@ function applyToTag (styleElement, obj) {
 
 /***/ }),
 
-/***/ 228:
+/***/ 229:
 /***/ (function(module, exports) {
 
 /**
@@ -403,7 +403,7 @@ module.exports = function listToStyles (parentId, list) {
 
 /***/ }),
 
-/***/ 229:
+/***/ 230:
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -513,13 +513,13 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 230:
+/***/ 231:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__game_chapters__ = __webpack_require__(231);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__game_character_verbs__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__game_chapters__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__game_character_verbs__ = __webpack_require__(233);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(30);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -569,7 +569,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 
-var MarkdownIt = __webpack_require__(86),
+var MarkdownIt = __webpack_require__(88),
     md = new MarkdownIt({
     html: true, // Enable HTML tags in source
     xhtmlOut: true // Use '/' to close single tags (<br />).
@@ -680,7 +680,7 @@ var MarkdownIt = __webpack_require__(86),
 
 /***/ }),
 
-/***/ 231:
+/***/ 232:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -691,27 +691,99 @@ var MarkdownIt = __webpack_require__(86),
 
 /***/ }),
 
-/***/ 232:
+/***/ 233:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store__ = __webpack_require__(86);
+
+
 var verbs = {
+    ask: function ask(words) {
+        return 'You asked something.';
+    },
+
+    drop: function drop(words) {
+        return 'You dropped something.';
+    },
+
+    e: function e(words) {
+        return verbs.east(words);
+    },
+    east: function east(words) {
+        return verbs.move('east');
+    },
+
+    go: function go(words) {
+        return verbs.move(words);
+    },
+
     help: function help(words) {
         return 'You ask for help.';
     },
 
-    look: function look(words) {
-        return 'You look around.';
-    },
     l: function l(words) {
         return verbs.look(words);
     },
+    listen: function listen(words) {
+        return 'You listen carefully.';
+    },
+    look: function look(words) {
+        return 'You look around. But you see nothing of interest.';
+    },
+
+    move: function move(words) {
+        return 'You move ' + words;
+    },
+
+    n: function n(words) {
+        return verbs.north(words);
+    },
+    north: function north(words) {
+        return verbs.move('north');
+    },
+
+    put: function put(words) {
+        return 'You put something somewhere.';
+    },
 
     reset: function reset(words) {
-        return 'You ask to reset the game but are denied.';
+        __WEBPACK_IMPORTED_MODULE_0__store__["a" /* default */].commit('reset');
+        return '';
     },
     restart: function restart(words) {
         return verbs.reset(words);
+    },
+
+    s: function s(words) {
+        return verbs.south(words);
+    },
+    say: function say(words) {
+        return 'You say ' + words;
+    },
+    search: function search(words) {
+        return 'You search for the meaning of life.';
+    },
+    south: function south(words) {
+        return verbs.move('south');
+    },
+
+    take: function take(words) {
+        return 'You take something';
+    },
+    tell: function tell(words) {
+        return 'You tell someone off.  That wasn\'t nice.';
+    },
+
+    use: function use(words) {
+        return 'You use something.';
+    },
+
+    w: function w(words) {
+        return verbs.west(words);
+    },
+    west: function west(words) {
+        return verbs.move('west');
     }
 };
 
@@ -719,7 +791,85 @@ var verbs = {
 
 /***/ }),
 
-/***/ 288:
+/***/ 236:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__hunter__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__aphen__ = __webpack_require__(238);
+
+
+
+var character = {
+    name: 'Phoenix',
+    nicknames: ['Nix'],
+    tag: 'nix',
+    age: 21,
+    prestige: 31,
+    id: '6-M1U6Q5R-V2C986L-PH03N1X',
+    credits: 1500370,
+    basic: {
+        hair: 'You have been told your hair is the color brown.',
+        eyes: 'You were born without eyes.',
+        height: 'You are six feet tall.',
+        tattoo: 'Your ID number is tattooed on your right collar bone as a barcode for easy scanning.  The same number is laser-etched microscopically on the collar bone underneath the visible tattoo',
+        clothes: 'You tend to wear all black, since color is not something you see.  You always wear a long leather coat with large pockets that hangs to just above your ankles and is rarely buttoned.  You wear a comfortable t-shirt and a pair of tough leather pants tucked inside a pair of thigh-high leather boots that zip with a large gun-metal zipper handle on the outside of each leg. Your ID card hangs from a gun-metal chain around your neck.'
+    },
+    profession: __WEBPACK_IMPORTED_MODULE_0__hunter__["a" /* default */],
+    history: [
+        // cover the 10 prestige points
+    ],
+    pocket: ['mouse', 'id'], // 5 small things
+    mutation: __WEBPACK_IMPORTED_MODULE_1__aphen__["a" /* default */],
+    cybernetics: [{
+        location: 'above right eye',
+        type: 'camera',
+        description: 'Above your right eyes is a camera that picks up anything you look at and wirelessly transmits the data to your little black box.'
+    }, {
+        location: 'inner ear',
+        type: 'audio',
+        description: 'Attached to the bones inside your right ear and jaw is a microphone and speaker that relay information to you wirelessly from your little black box.'
+    }],
+    verbs: {
+        mouse: function mouse(do_something) {
+            return 'M0U53 doesn\'t understand what you are asking of her.';
+        }
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (character);
+
+/***/ }),
+
+/***/ 237:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    name: 'Bounty Hunter',
+    tag: 'hunter',
+    description: '',
+    verbs: {}
+});
+
+/***/ }),
+
+/***/ 238:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    name: 'Apophenism',
+    tag: 'aphen',
+    description: 'Apophenism is a mutation that allows a person to see the elemental make up of their surroundings at it\'s most basic level.  This particular mutation can render a person dysfunctional if they do not learn how to control the visual stimuli the mutation causes.  It is rare that a person with apophenism survives with both eyes intact.  Most of the time they remove their own eyes to save their sanity.  Most aphens have the ability to create things from nothing.',
+    verbs: {
+        create: function create(something) {}
+    }
+});
+
+/***/ }),
+
+/***/ 294:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -833,15 +983,35 @@ if (false) {
 
 /***/ }),
 
-/***/ 289:
+/***/ 295:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 85:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    title: 'the search for x',
+    description: '\n# The Search for X\n\nIt is the 3121 and Earth is overpopulated.  78 billion people and growing live on the dead rock that is now Earth.  The ice caps have melted and the water that remains is polluted.  Only a giant city remains across the planet.  The governments of the twenty-first century have fallen replaced by six mega-corporations that control all aspects of life including births and deaths.  \n\nLife begin and end at prestige rating of zero. It is a constant race to see who is better, or worse, and who is ultimately worthy of surviving until a ripe old age.\n\nA recent leak from Allied Corporation, the oldest and strongest of the megacorps, reveals they are searching for something referred to as \'X\'.  You are one of the first few to learn of this development.  \n\n**Do you wish to undertake this mission?** \n        ',
+    exit: 'yes',
+    next: 'Your acceptance has been noted, Allied Corporation will pay handsomely for any information regarding their missing property.'
+});
+
+/***/ }),
+
+/***/ 86:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex_persistedstate__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__game_character_character__ = __webpack_require__(292);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex_persistedstate__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__game_character_character__ = __webpack_require__(236);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__game_chapters_000__ = __webpack_require__(85);
 
 
@@ -882,102 +1052,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
     }
 }));
 
-/***/ }),
-
-/***/ 292:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__hunter__ = __webpack_require__(293);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__aphen__ = __webpack_require__(294);
-
-
-
-var character = {
-    name: 'Phoenix',
-    nicknames: ['Nix'],
-    tag: 'nix',
-    age: 21,
-    prestige: 31,
-    id: '6-M1U6Q5R-V2C986L-PH03N1X',
-    credits: 1500370,
-    basic: {
-        hair: 'You have been told your hair is the color brown.',
-        eyes: 'You were born without eyes.',
-        height: 'You are six feet tall.',
-        tattoo: 'Your ID number is tattooed on your right collar bone as a barcode for easy scanning.  The same number is laser-etched microscopically on the collar bone underneath the visible tattoo',
-        clothes: 'You tend to wear all black, since color is not something you see.  You always wear a long leather coat with large pockets that hangs to just above your ankles and is rarely buttoned.  You wear a comfortable t-shirt and a pair of tough leather pants tucked inside a pair of thigh-high leather boots that zip with a large gun-metal zipper handle on the outside of each leg. Your ID card hangs from a gun-metal chain around your neck.'
-    },
-    profession: __WEBPACK_IMPORTED_MODULE_0__hunter__["a" /* default */],
-    history: [
-        // cover the 10 prestige points
-    ],
-    pocket: ['mouse', 'id'], // 5 small things
-    mutation: __WEBPACK_IMPORTED_MODULE_1__aphen__["a" /* default */],
-    cybernetics: [{
-        location: 'above right eye',
-        type: 'camera',
-        description: 'Above your right eyes is a camera that picks up anything you look at and wirelessly transmits the data to your little black box.'
-    }, {
-        location: 'inner ear',
-        type: 'audio',
-        description: 'Attached to the bones inside your right ear and jaw is a microphone and speaker that relay information to you wirelessly from your little black box.'
-    }],
-    verbs: {
-        mouse: function mouse(do_something) {}
-    }
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (character);
-
-/***/ }),
-
-/***/ 293:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    name: 'Bounty Hunter',
-    tag: 'hunter',
-    description: '',
-    verbs: {}
-});
-
-/***/ }),
-
-/***/ 294:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    name: 'Apophenism',
-    tag: 'aphen',
-    description: 'Apophenism is a mutation that allows a person to see the elemental make up of their surroundings at it\'s most basic level.  This particular mutation can render a person dysfunctional if they do not learn how to control the visual stimuli the mutation causes.  It is rare that a person with apophenism survives with both eyes intact.  Most of the time they remove their own eyes to save their sanity.  Most aphens have the ability to create things from nothing.',
-    verbs: {
-        create: function create(something) {}
-    }
-});
-
-/***/ }),
-
-/***/ 295:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 85:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    title: 'the search for x',
-    description: '\n# The Search for X\n\nIt is the 3121 and Earth is overpopulated.  78 billion people and growing live on the dead rock that is now Earth.  The ice caps have melted and the water that remains is polluted.  Only a giant city remains across the planet.  The governments of the twenty-first century have fallen replaced by six mega-corporations that control all aspects of life including births and deaths.  \n\nLife begin and end at prestige rating of zero. It is a constant race to see who is better, or worse, and who is ultimately worthy of surviving until a ripe old age.\n\nA recent leak from Allied Corporation, the oldest and strongest of the megacorps, reveals they are searching for something referred to as \'X\'.  You are one of the first few to learn of this development.  \n\n**Do you wish to undertake this mission?** \n        ',
-    exit: 'yes',
-    next: 'Your acceptance has been noted, Allied Corporation will pay handsomely for any information regarding their missing property.'
-});
-
 /***/ })
 
-},[107]);
+},[108]);
