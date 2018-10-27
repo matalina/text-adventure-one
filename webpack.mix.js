@@ -15,7 +15,10 @@ mix.js('src/js/app.js', 'www/js/')
         .extract(['vue','vue-router','vuex','vuex-persistedstate', 'vue-events',
             'axios','bootstrap-vue', 'markdown-it','gray-matter','typeit'])
         .sass('src/scss/app.scss', 'www/css')
-        .copy('src/index.html', 'www/index.html');
+        .copy('src/index.html', 'www/index.html')
+    .copy('www/', 'docs/');
+
+
 
 // Full API
 // mix.js(src, output);
